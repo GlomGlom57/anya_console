@@ -2,8 +2,8 @@
 /* PFF - Low level disk control module for AVR            (C)ChaN, 2014    */
 /*-------------------------------------------------------------------------*/
 
-#include "../../include/external/pff.h"
-#include "../../include/external/diskio.h"
+#include "../../include/external/petit/pff.h"
+#include "../../include/external/petit/diskio.h"
 
 /*-------------------------------------------------------------------------*/
 /* Platform dependent macros and functions needed to be modified           */
@@ -16,7 +16,7 @@
 #define	SELECTING	!(PORTB &  _BV(3))	/* CS status (true:CS low) */
 #define	FORWARD(d)	xmit(d)				/* Data forwarding function (console out) */
 #else  // Replace ATtiny macros. whg
-#include "../../include/external/pffArduino.h"  // whg
+#include "../../include/external/petit/pffArduino.h"  // whg
 #endif  // Replace ATtiny macros. whg
 void xmit (char);			/* suart.S: Send a byte via software UART */
 void dly_100us (void);		/* usi.S: Delay 100 microseconds */

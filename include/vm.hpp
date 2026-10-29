@@ -1,53 +1,94 @@
 #ifndef VM_HPP
 #define VM_HPP
 
+#include <stdint.h>
+
 #define SRAM_SIZE 50
+#define MEM_MARGIN 8
 
-enum DType : unsigned char {
-  U8 = 0x00,
-  I8 = 0x01,
-  U16 = 0x02,
-  I16 = 0x03,
-};
+// Data Types
+#define U8 0x00
+#define I8 0x01
+#define U16 0x02
+#define I16 0x03
 
-enum Opcode : unsigned char {
-  // Memory
-  LOAD_C = 0x00,
-  LOAD_I8 = 0x01,
-  LOAD_U8 = 0x02,
-  LOAD_I16 = 0x03,
-  LOAD_U16 = 0x04,
-  STORE = 0x05,
+//  Opcodes
+// Memory
+#define LOAD_C 0x00
 
-  // Math
-  ADD = 0x06,
-  SUB = 0x07,
-  MPL = 0x08,
-  DIV = 0x09,
+#define LOAD_I8 0x01
+#define LOAD_U8 0x02
+#define LOAD_I16 0x03
+#define LOAD_U16 0x04
+#define LOAD_VAR_DIR 0x05
 
-  // Jumps
-  JMP = 0x0A,
-  JMP_P = 0x0B,
-  JMP_N = 0x0C,
-  JMP_Z = 0x0D,
-  JMP_NZ = 0x0E,
+#define STORE 0x06
+#define STORE_VAR_DIR 0x07
+#define STORE_TO_DIR 0x08
 
-  // Functions
-  CALL = 0x0F,
-  RET = 0x10,
+// Math
+#define ADD 0x09
+#define SUB 0x0A
+#define MPL 0x0B
+#define DIV 0x0C
 
-  // Screen
-  CLEAR = 0x11,
-  SHOW = 0x12,
-  PIX_ON = 0x13,
-  PIX_OFF = 0x14,
+// Jumps
+#define JMP 0x0D
+#define JMP_P 0x0E
+#define JMP_N 0x0F
+#define JMP_Z 0x10
+#define JMP_NZ 0x11
 
-  // Game
-  WAIT = 0x15, // Wait ms
-  RECV = 0x16, // Read keyboard
-  END = 0x17, // End game
-};
+// Functions
+#define CALL 0x12
+#define RET 0x13
 
-void exec_game();
+// Screen
+#define CLEAR_W 0x14
+#define CLEAR_B 0x15
+#define SHOW 0x16
+#define PIX_ON 0x17
+#define PIX_OFF 0x18
+
+// Game
+#define WAIT 0x19 // Wait ms
+#define RECV 0x1A // Read keyboard
+#define CLEARBT 0x1B // Clear keyboar state
+#define END 0x1C // End game
+
+// Keyboard
+// What preceeds buttons is the JUMP dir
+#define BTR1C1 0x1D
+#define BTR1C2 0x1E
+#define BTR1C3 0x1F
+#define BTR1C4 0x20
+
+#define BTR2C1 0x21
+#define BTR2C2 0x22
+#define BTR2C3 0x23
+#define BTR2C4 0x24
+
+#define BTR3C1 0x25
+#define BTR3C2 0x26
+#define BTR3C3 0x27
+#define BTR3C4 0x28
+
+#define BTR4C1 0x29
+#define BTR4C2 0x2A
+#define BTR4C3 0x2B
+#define BTR4C4 0x2C
+
+// SRAM pointer
+#define SRAMP_ADD 0x2D
+#define SRAMP_SUB 0x2E
+
+// OTHER ADDS
+#define PIX_ON_M 0x2F
+#define PIX_OFF_M 0x30
+
+#define PRIORITY_ON 0x31
+#define PRIORITY_OFF 0x32
+
+void exec_game(uint32_t &file_pos);
 
 #endif

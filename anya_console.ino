@@ -16,7 +16,7 @@ void setup() {
   set_buttons();
 }
 
-void menu() {
+uint32_t menu() {
   byte curr_option = 0;
   char files[MAX_FILES_LIST][MAX_FILES_LEN];
 
@@ -29,10 +29,10 @@ void menu() {
     delay(50);
   }
 
-  open_file(files[curr_option]);
+  return open_file(files[curr_option]);
 }
 
 void loop() {
-  menu();
-  exec_game();
+  uint32_t file_pos = menu();
+  exec_game(file_pos);
 }

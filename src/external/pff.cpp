@@ -26,8 +26,8 @@
 /                     Added _FS_FAT16 option.
 /----------------------------------------------------------------------------*/
 
-#include "../../include/external/pff.h"		/* Petit FatFs configurations and declarations */
-#include "../../include/external/diskio.h"		/* Declarations of low level disk I/O functions */
+#include "../../include/external/petit/pff.h"		/* Petit FatFs configurations and declarations */
+#include "../../include/external/petit/diskio.h"		/* Declarations of low level disk I/O functions */
 
 
 
